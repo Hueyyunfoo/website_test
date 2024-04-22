@@ -1,0 +1,96 @@
+// Import Bootstrap SCSS files
+@import 'vendor/bootstrap/bootstrap';
+
+// Custom styles
+body {
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+
+/* Margin for Content below nav */
+.container {
+  .row {
+    &.content-block {
+      &--below-navbar {
+        margin-top: 56px;
+      }
+    }
+  }
+}
+
+
+/* Sidebar */
+.container {
+  .row {
+    position: relative;
+
+    .sidebar {
+      background-color: #f0f0f0;
+      position: relative;
+      transition: transform 0.3s ease;
+      z-index: 1;
+
+      .sidebar-content {
+        padding: 20px;
+      }
+    }
+
+    /* main content*/
+    .content {
+      background-color: #e0e0e0;
+      padding: 20px;
+    }
+    
+    .content-placeholder {
+      width: 100%;
+      height: 400px;
+      background-color: #ccc; 
+      border-radius: 5px; 
+      margin-bottom: 20px;
+
+      @media (max-width: 768px) {
+        height: 200px; // Adjust height for mobile view
+      }
+    }
+
+    .content-image {
+      width: 100%;
+    }
+
+    /* Side bar toggle */
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        top: auto;
+        left:  0px; // Initially hidden off-canvas
+        width: 250px;
+        height: 100%;
+        overflow-y: auto;
+        transform: translateX(-100%); // Slide to the left
+        z-index: 1000;
+      }
+
+      .sidebar.open {
+        left: 0; // Move to the left edge of the screen when open
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .toggle-button {
+    display: none; // Initially hide on desktop view
+
+    @media (max-width: 768px) {
+      display: block; // Show on mobile view
+      top: 20px;
+      left: 20px;
+    }
+  }
+}
+
+
